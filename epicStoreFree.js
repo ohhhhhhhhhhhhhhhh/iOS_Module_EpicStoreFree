@@ -331,6 +331,7 @@ async function renderWidget(widget) {
 
 	// epic免费商城
 	var response = await getEpicStoreFree()
+	const totalGames = response.Catalog.searchStore.elements.length
 	const currentNum = randomNum(0, response.Catalog.searchStore.elements.length - 1);
 	// const currentNum = 2;
 	response = response.Catalog.searchStore.elements[currentNum]
@@ -355,7 +356,7 @@ async function renderWidget(widget) {
 	avatarWidgetImg.imageSize = widgetConfigs.userAvatarSize
 	firstRowStack.addSpacer(8)
 	//
-	const userNameWidgetText = firstRowStack.addText(`免费游戏`)
+	const userNameWidgetText = firstRowStack.addText("免费游戏 " + (currentNum + 1) + "/" + totalGames)
 	userNameWidgetText.font = widgetConfigs.textUserNameFont
 	userNameWidgetText.textColor = widgetConfigs.textUserNameColor
 	firstRowStack.addSpacer(12)
